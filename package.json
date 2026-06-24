@@ -1,0 +1,21 @@
+{
+  "name": "module-2-copilot-lab",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Standalone Module 2 Express lab — Copilot interaction modes (local only)",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "step": "bash scripts/go-to-step.sh",
+    "solution": "bash scripts/show-solution.sh"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "supertest": "^7.1.4",
+    "vitest": "^3.2.4"
+  }
+}
