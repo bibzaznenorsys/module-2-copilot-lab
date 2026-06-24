@@ -4,7 +4,7 @@ Hands-on lab aligned with **Module 2 theory: Interaction Modes — All Methods**
 
 Build `POST /students` and `POST /classes` with Express, Vitest, and GitHub Copilot.
 
-**Reference branch:** `feature/module-2/solution` (all 15 tests pass)
+**Reference solution:** `solution/src` (all 15 tests pass)
 
 ---
 
@@ -50,15 +50,85 @@ A school launches a teacher portal. Teachers register students and classes witho
 
 ---
 
-## Setup
+## Prerequisites
+
+This lab uses Node.js, npm, and Yarn.
+
+Check if they are installed:
 
 ```bash
-git clone https://github.com/HansLanda14ib/github-formation.git
-cd github-formation
-git checkout feature/module-2/solution
-cd labs/module-2
-npm install
-npm test
+node -v
+npm -v
+yarn -v
+```
+
+If npm is missing, install Node.js first (npm is included with Node.js).
+
+### Ubuntu (apt)
+
+```bash
+sudo apt update
+sudo apt install -y nodejs npm
+sudo npm install -g yarn
+```
+
+### Windows (winget, PowerShell)
+
+```powershell
+winget install OpenJS.NodeJS.LTS
+npm install -g yarn
+```
+
+If `winget` is not available, install Node.js LTS from https://nodejs.org and then run:
+
+```powershell
+npm install -g yarn
+```
+
+---
+
+## Setup
+
+Standalone project. **Not linked to GitHub formation repo.**
+
+```bash
+yarn install
+yarn step 00
+yarn test tests/step-00-intro.test.js
+```
+
+Optional helpers for live sessions:
+
+```bash
+# load starter state for a step
+yarn step 00
+yarn step 01
+yarn step 02
+yarn step 03
+yarn step 04
+yarn step 05
+
+# copy full reference solution into src/
+yarn solution
+```
+
+## Play all steps
+
+| Step | Reset command | Test |
+|------|---------------|------|
+| 0 Setup | `yarn step 00` | `yarn test tests/step-00-intro.test.js` |
+| 1 Validators | `yarn step 01` | `yarn test tests/step-01-schemas.test.js` |
+| 2 POST /students | `yarn step 02` | `yarn test tests/step-02-student-route.test.js` |
+| 3 POST /classes | `yarn step 03` | `yarn test tests/step-03-class-route.test.js` |
+| 4 Duplicates | `yarn step 04` | `yarn test tests/step-04-duplicate-errors.test.js` |
+| 5 Integration | `yarn step 05` | `yarn test` |
+
+After each step, implement with Copilot, then compare:
+
+```bash
+yarn solution
+yarn test
+yarn step 02
 ```
 
 ---
@@ -66,7 +136,19 @@ npm test
 ## Project layout
 
 ```
-labs/module-2/
+module-2-copilot-lab/
+├── scripts/
+│   ├── go-to-step.sh          # Load step starter into src/
+│   └── show-solution.sh       # Copy full solution into src/
+├── solution/
+│   └── src/                   # Reference implementation
+├── stubs/
+│   ├── 00-intro/
+│   ├── 01-schemas/
+│   ├── 02-student-route/
+│   ├── 03-class-route/
+│   ├── 04-duplicate-errors/
+│   └── solutions/
 ├── src/
 │   ├── app.js                 # Express app (health + routes)
 │   ├── validators.js          # Step 1
@@ -125,7 +207,7 @@ From **Module 2 — Interaction Modes — All Methods**:
 
 Before moving on:
 
-- [ ] `npm test -- tests/step-XX-....test.js` passes
+- [ ] `yarn test tests/step-XX-....test.js` passes
 - [ ] Every suggestion was **reviewed** (no blind Accept All)
 - [ ] Error strings match tests **exactly**
 - [ ] Imports are correct; no unused Copilot artifacts
@@ -142,12 +224,12 @@ Work live: clear code → use assigned mode → test → compare with solution b
 ### Step 0 — Setup & Command Palette
 
 **Copilot mode:** Command Palette  
-**Test:** `npm test -- tests/step-00-intro.test.js`
+**Test:** `yarn test tests/step-00-intro.test.js`
 
 #### Exercise
 
 1. `Ctrl+Shift+P` / `Cmd+Shift+P` → open terminal
-2. `npm install` && `npm test -- tests/step-00-intro.test.js`
+2. `yarn install` && `yarn test tests/step-00-intro.test.js`
 3. Command Palette → **Copilot: Open Chat** → *“Explain this lab folder structure”*
 
 #### Solution — `src/app.js`
@@ -172,7 +254,7 @@ export function createApp() {
 ### Step 1 — Validators (Comments to Code + Inline Chat)
 
 **Copilot modes:** Comments to Code, Inline Chat, Inline Suggestions  
-**Test:** `npm test -- tests/step-01-schemas.test.js`
+**Test:** `yarn test tests/step-01-schemas.test.js`
 
 #### Exercise
 
@@ -246,7 +328,7 @@ export function validateClass(payload) {
 ### Step 2 — POST /students (Inline Chat + Inline Suggestions)
 
 **Copilot modes:** Inline Chat, Inline Suggestions  
-**Test:** `npm test -- tests/step-02-student-route.test.js`
+**Test:** `yarn test tests/step-02-student-route.test.js`
 
 #### Exercise
 
@@ -313,7 +395,7 @@ export function createApp() {
 ### Step 3 — POST /classes (Copilot Chat)
 
 **Copilot mode:** Copilot Chat (side panel)  
-**Test:** `npm test -- tests/step-03-class-route.test.js`
+**Test:** `yarn test tests/step-03-class-route.test.js`
 
 #### Exercise
 
@@ -379,7 +461,7 @@ export function createApp() {
 ### Step 4 — Duplicates & unified errors (/explain + /suggest)
 
 **Copilot modes:** Slash `/explain`, `/suggest`  
-**Test:** `npm test -- tests/step-04-duplicate-errors.test.js`
+**Test:** `yarn test tests/step-04-duplicate-errors.test.js`
 
 #### Exercise
 
@@ -411,7 +493,7 @@ Duplicate guards are in the route files (see step 2–3 solutions above).
 ### Step 5 — Tests, quality & LAB-NOTES (/tests + Generate Tests)
 
 **Copilot modes:** `/tests`, `/comment`, Command Palette → Generate Tests  
-**Test:** `npm test` (all 15)
+**Test:** `yarn test` (all 15)
 
 #### Exercise
 
@@ -432,12 +514,12 @@ Duplicate guards are in the route files (see step 2–3 solutions above).
 
 | Step | Command |
 |------|---------|
-| 0 | `npm test -- tests/step-00-intro.test.js` |
-| 1 | `npm test -- tests/step-01-schemas.test.js` |
-| 2 | `npm test -- tests/step-02-student-route.test.js` |
-| 3 | `npm test -- tests/step-03-class-route.test.js` |
-| 4 | `npm test -- tests/step-04-duplicate-errors.test.js` |
-| 5 | `npm test` |
+| 0 | `yarn test tests/step-00-intro.test.js` |
+| 1 | `yarn test tests/step-01-schemas.test.js` |
+| 2 | `yarn test tests/step-02-student-route.test.js` |
+| 3 | `yarn test tests/step-03-class-route.test.js` |
+| 4 | `yarn test tests/step-04-duplicate-errors.test.js` |
+| 5 | `yarn test` |
 
 ---
 
@@ -461,18 +543,17 @@ Duplicate guards are in the route files (see step 2–3 solutions above).
 3. Run the step test together
 4. **Validate quality** (checklist above)
 5. Reveal **solution** section from this README
-6. Compare with annotated source on `feature/module-2/solution`
+6. Compare with files under `solution/src`
 
 ---
 
 ## Full reference code
 
-All files on `feature/module-2/solution` include `@copilot-context` and `@copilot-oneshot` comments demonstrating **Comments to Code** best practice.
+Reference files are in `solution/src`. To copy them into `src/` and run the full suite:
 
 ```bash
-git checkout feature/module-2/solution
-cd labs/module-2
-npm test
+yarn solution
+yarn test
 ```
 
 Student reflections: complete [LAB-NOTES.md](./LAB-NOTES.md).

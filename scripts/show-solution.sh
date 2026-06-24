@@ -10,4 +10,4 @@ cp solution/src/routes/*.js src/routes/
 cp solution/src/middleware/errors.js src/middleware/errors.js
 
 echo "→ Full solution copied to src/"
-echo "  Run: npm test"
+echo "  Run: yarn test"

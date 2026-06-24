@@ -6,11 +6,11 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 STEP="${1:-}"
 
 usage() {
-  echo "Usage: npm run step -- <00|01|02|03|04|05>"
+  echo "Usage: yarn step <00|01|02|03|04|05>"
   echo ""
   echo "Examples:"
-  echo "  npm run step 00"
-  echo "  npm run step 01"
+  echo "  yarn step 00"
+  echo "  yarn step 01"
   exit 1
 }
 
@@ -147,10 +147,10 @@ EOF
 esac
 
 case "$STEP" in
-  00) echo "  Test: npm test -- tests/step-00-intro.test.js" ;;
-  01) echo "  Test: npm test -- tests/step-01-schemas.test.js" ;;
-  02) echo "  Test: npm test -- tests/step-02-student-route.test.js" ;;
-  03) echo "  Test: npm test -- tests/step-03-class-route.test.js" ;;
-  04) echo "  Test: npm test -- tests/step-04-duplicate-errors.test.js" ;;
-  05) echo "  Test: npm test  (all 15)" ;;
+  00) echo "  Test: yarn test tests/step-00-intro.test.js" ;;
+  01) echo "  Test: yarn test tests/step-01-schemas.test.js" ;;
+  02) echo "  Test: yarn test tests/step-02-student-route.test.js" ;;
+  03) echo "  Test: yarn test tests/step-03-class-route.test.js" ;;
+  04) echo "  Test: yarn test tests/step-04-duplicate-errors.test.js" ;;
+  05) echo "  Test: yarn test  (all 15)" ;;
 esac
