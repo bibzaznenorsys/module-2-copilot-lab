@@ -1,12 +1,12 @@
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-function missingFields(payload, fields) {
+const missingFields = (payload, fields) => {
   const missing = fields.filter((field) => !payload?.[field])
   if (missing.length === 0) return null
   return `Missing required fields: ${missing.join(', ')}`
 }
 
-export function validateStudent(payload) {
+export const validateStudent = (payload) => {
   const missing = missingFields(payload, ['studentId', 'fullName', 'email'])
   if (missing) {
     return { valid: false, error: missing }
@@ -26,7 +26,7 @@ export function validateStudent(payload) {
   }
 }
 
-export function validateClass(payload) {
+export const validateClass = (payload) => {
   const missing = missingFields(payload, ['classCode', 'teacher'])
   if (missing) {
     return { valid: false, error: missing }

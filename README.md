@@ -237,7 +237,7 @@ Work live: clear code → use assigned mode → test → compare with solution b
 ```js
 import express from 'express'
 
-export function createApp() {
+export const createApp = () => {
   const app = express()
   app.use(express.json())
 
@@ -284,13 +284,13 @@ export function createApp() {
 ```js
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-function missingFields(payload, fields) {
+const missingFields = (payload, fields) => {
   const missing = fields.filter((field) => !payload?.[field])
   if (missing.length === 0) return null
   return `Missing required fields: ${missing.join(', ')}`
 }
 
-export function validateStudent(payload) {
+export const validateStudent = (payload) => {
   const missing = missingFields(payload, ['studentId', 'fullName', 'email'])
   if (missing) return { valid: false, error: missing }
 
@@ -308,7 +308,7 @@ export function validateStudent(payload) {
   }
 }
 
-export function validateClass(payload) {
+export const validateClass = (payload) => {
   const missing = missingFields(payload, ['classCode', 'teacher'])
   if (missing) return { valid: false, error: missing }
 
@@ -375,7 +375,7 @@ export default router
 import express from 'express'
 import studentsRouter from './routes/students.js'
 
-export function createApp() {
+export const createApp = () => {
   const app = express()
   app.use(express.json())
 
@@ -442,7 +442,7 @@ import express from 'express'
 import classesRouter from './routes/classes.js'
 import studentsRouter from './routes/students.js'
 
-export function createApp() {
+export const createApp = () => {
   const app = express()
   app.use(express.json())
 
@@ -477,11 +477,11 @@ export function createApp() {
 #### Solution — `src/middleware/errors.js`
 
 ```js
-export function errorBody(message) {
+export const errorBody = (message) => {
   return { error: message }
 }
 
-export function sendError(res, status, message) {
+export const sendError = (res, status, message) => {
   return res.status(status).json(errorBody(message))
 }
 ```

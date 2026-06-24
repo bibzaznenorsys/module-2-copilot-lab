@@ -49,7 +49,7 @@ case "$STEP" in
 import express from 'express'
 import studentsRouter from './routes/students.js'
 
-export function createApp() {
+    export const createApp = () => {
   const app = express()
   app.use(express.json())
 
@@ -72,7 +72,7 @@ import express from 'express'
 import classesRouter from './routes/classes.js'
 import studentsRouter from './routes/students.js'
 
-export function createApp() {
+    export const createApp = () => {
   const app = express()
   app.use(express.json())
 
@@ -96,7 +96,7 @@ import express from 'express'
 import classesRouter from './routes/classes.js'
 import studentsRouter from './routes/students.js'
 
-export function createApp() {
+    export const createApp = () => {
   const app = express()
   app.use(express.json())
 

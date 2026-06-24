@@ -1,6 +1,6 @@
 import express from 'express'
 
-export function createApp() {
+export const createApp = () => {
   const app = express()
   app.use(express.json())
 

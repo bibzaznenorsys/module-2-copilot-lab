@@ -1,33 +1,33 @@
 const students = new Map()
 const classes = new Map()
 
-export function resetStore() {
+export const resetStore = () => {
   students.clear()
   classes.clear()
 }
 
-export function getStudent(studentId) {
+export const getStudent = (studentId) => {
   return students.get(studentId)
 }
 
-export function saveStudent(student) {
+export const saveStudent = (student) => {
   students.set(student.studentId, student)
   return student
 }
 
-export function hasStudent(studentId) {
+export const hasStudent = (studentId) => {
   return students.has(studentId)
 }
 
-export function getClass(classCode) {
+export const getClass = (classCode) => {
   return classes.get(classCode)
 }
 
-export function saveClass(clazz) {
+export const saveClass = (clazz) => {
   classes.set(clazz.classCode, clazz)
   return clazz
 }
 
-export function hasClass(classCode) {
+export const hasClass = (classCode) => {
   return classes.has(classCode)
 }

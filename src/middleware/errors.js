@@ -4,10 +4,10 @@
  * All 4xx/5xx responses must use { error: string } — see step-04-duplicate-errors.test.js
  */
 
-export function errorBody(message) {
+export const errorBody = (message) => {
   return { error: message }
 }
 
-export function sendError(res, status, message) {
+export const sendError = (res, status, message) => {
   return res.status(status).json(errorBody(message))
 }
